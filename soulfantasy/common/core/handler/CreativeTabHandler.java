@@ -13,7 +13,7 @@ public class CreativeTabHandler{
 		public ItemStack getTabIconItem() {
 			//in this itemstack you can put your creative icon
 			//but only item or block that registered
-			return new ItemStack(RegsterHandler.bloodbottle);
+			return new ItemStack(ItemRegsterHandler.bloodbottle);
 		}
 	};
 }

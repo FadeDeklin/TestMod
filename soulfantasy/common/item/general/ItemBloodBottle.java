@@ -2,7 +2,7 @@ package fadedeklin.soulfantasy.common.item.general;
 
 import java.util.Random;
 
-import fadedeklin.soulfantasy.common.core.handler.ItemBase;
+import fadedeklin.soulfantasy.common.item.ItemBase;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 
 public class ItemBloodBottle extends ItemBase{
 	public ItemBloodBottle(String name, CreativeTabs tab) {
-		  super(name, tab);
+		  super(name, tab, 1);
 		 }
 	@Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
