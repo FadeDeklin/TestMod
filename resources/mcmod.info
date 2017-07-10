@@ -1,0 +1,16 @@
+[
+{
+  "modid": "soulfantasy",
+  "name": "Soul Fantasy",
+  "description": "Lets you get into the Chinese wuxia fantasy world.",
+  "version": "0.1",
+  "mcversion": "1.11.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["FadeDeklin"],
+  "credits": "Loremaster",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
