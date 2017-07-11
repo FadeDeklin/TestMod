@@ -4,9 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fadedeklin.soulfantasy.common.SoulFantasy;
-import fadedeklin.soulfantasy.common.item.BlockBase;
+import fadedeklin.soulfantasy.common.asset.RegisterAll;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -19,20 +18,9 @@ import net.minecraftforge.registries.IForgeRegistry;
 @EventBusSubscriber
 public class BlockRegsterHandler {
 	
+	//Contains all Blocks
 	public static Map<String, Block> BLOCKS = new HashMap<String, Block>();
 	public static Map<String, ItemBlock> ITEM_BLOCKS = new HashMap<String, ItemBlock>();
-	
-	//init your item using Blockbase.java "name,which creative tab, maxstack number
-	//Material mat, String name, float hardness, float resistance, CreativeTabs tab, int harvest, String tool
-	public static Block testblock = 
-			new BlockBase(Material.ROCK, "test_block", 2F, 10F, CreativeTabHandler.soulfantasy, 2, "pickaxe");
-			
-	//Register Here
-	public static void HashMapReg() {
-		if(!BLOCKS.isEmpty()) return;
-		
-		regBlock(testblock);
-	}
 	
 	//New instance of a block for every block passed through Main Register Part using HashMap
 	public static void regBlock(Block block) {
@@ -44,7 +32,7 @@ public class BlockRegsterHandler {
 	//Main Register Part
 	@SubscribeEvent
 	public static void regItemBlocks(RegistryEvent.Register<Item> event) {
-		HashMapReg();
+		RegisterAll.HashMapRegBlock();
 		SoulFantasy.LOGGER.info("Registering ItemBlocks: ");
 		IForgeRegistry<Item> registry = event.getRegistry();
 		
@@ -62,7 +50,7 @@ public class BlockRegsterHandler {
 	//Main Register Part
 	@SubscribeEvent
 	public static void regBlocks(RegistryEvent.Register<Block> event) {
-		HashMapReg();
+		RegisterAll.HashMapRegBlock();
 		SoulFantasy.LOGGER.info("Registering Blocks: ");
 		IForgeRegistry<Block> registry = event.getRegistry();
 		for(Block block : BLOCKS.values()) {
