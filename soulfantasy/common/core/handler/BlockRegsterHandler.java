@@ -24,37 +24,42 @@ public class BlockRegsterHandler {
 	
 	//init your item using Blockbase.java "name,which creative tab, maxstack number
 	//Material mat, String name, float hardness, float resistance, CreativeTabs tab, int harvest, String tool
-			public static Block testblock = 
-					new BlockBase(Material.ROCK, "test_block", 2F, 10F, CreativeTabHandler.soulfantasy, 2, "pickaxe");
+	public static Block testblock = 
+			new BlockBase(Material.ROCK, "test_block", 2F, 10F, CreativeTabHandler.soulfantasy, 2, "pickaxe");
 			
-	
+	//Register Here
 	public static void HashMapReg() {
 		if(!BLOCKS.isEmpty()) return;
 		
 		regBlock(testblock);
 	}
-		
-		public static void regBlock(Block block) {
-			BLOCKS.put(block.getRegistryName().getResourcePath(), block);
-			ITEM_BLOCKS.put(block.getRegistryName().getResourcePath(), (ItemBlock)
-					new ItemBlock(block).setRegistryName(block.getRegistryName()));
-		}
-		
+	
+	//New instance of a block for every block passed through Main Register Part using HashMap
+	public static void regBlock(Block block) {
+		BLOCKS.put(block.getRegistryName().getResourcePath(), block);
+		ITEM_BLOCKS.put(block.getRegistryName().getResourcePath(), (ItemBlock)
+			new ItemBlock(block).setRegistryName(block.getRegistryName()));
+	}
+	
+	//Main Register Part
 	@SubscribeEvent
 	public static void regItemBlocks(RegistryEvent.Register<Item> event) {
 		HashMapReg();
 		SoulFantasy.LOGGER.info("Registering ItemBlocks: ");
 		IForgeRegistry<Item> registry = event.getRegistry();
-		for(Item item : ITEM_BLOCKS.values()) {//New instance of a block for every block passed through
+		
+		for(Item item : ITEM_BLOCKS.values()) {
 			SoulFantasy.LOGGER.info("\tRegistering " + item.getUnlocalizedName().substring(5));
 			registry.register(item);
-
+			SoulFantasy.LOGGER.info("\t\tRegistered!");
+			
 			ModelLoader.setCustomModelResourceLocation(item, 0, 
 					new ModelResourceLocation(item.getRegistryName(),"inventory"));
 			SoulFantasy.LOGGER.info("\t\t\tItemBlocks Model Registered!");
 		}
     }
 	
+	//Main Register Part
 	@SubscribeEvent
 	public static void regBlocks(RegistryEvent.Register<Block> event) {
 		HashMapReg();
@@ -62,10 +67,11 @@ public class BlockRegsterHandler {
 		IForgeRegistry<Block> registry = event.getRegistry();
 		for(Block block : BLOCKS.values()) {
 		registry.register(block);
+		SoulFantasy.LOGGER.info("\t\tRegistered!");
 		
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
 				new ModelResourceLocation(block.getRegistryName(),"inventory"));
-		SoulFantasy.LOGGER.info("\t\t\tItemBlocks Model Registered!");
+		SoulFantasy.LOGGER.info("\t\t\tBlocks Model Registered!");
 		
 		}
 	}
