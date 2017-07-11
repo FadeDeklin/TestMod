@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fadedeklin.soulfantasy.common.SoulFantasy;
+import fadedeklin.soulfantasy.common.asset.RegisterAll;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -24,11 +25,12 @@ public class ItemRegsterHandler {
 		}
 
 	@SubscribeEvent
-	public static void regItems(RegistryEvent.Register<Item> event, Item...items) {
+	public static void regItems(RegistryEvent.Register<Item> event) {
+		RegisterAll.HashMapRegBlock();
 		SoulFantasy.LOGGER.info("Registering Items: ");
         IForgeRegistry<Item> registry = event.getRegistry();
         
-        for(Item item : items) {
+        for(Item item : ITEMS.values()) {
         	
         	SoulFantasy.LOGGER.info("\tRegistering " + item.getUnlocalizedName().substring(5));
         	registry.register(item);
