@@ -26,7 +26,7 @@ public class ItemRegsterHandler {
 
 	@SubscribeEvent
 	public static void regItems(RegistryEvent.Register<Item> event) {
-		RegisterAll.HashMapRegBlock();
+		RegisterAll.HashMapRegItem();
 		SoulFantasy.LOGGER.info("Registering Items: ");
         IForgeRegistry<Item> registry = event.getRegistry();
         

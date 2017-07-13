@@ -1,6 +1,6 @@
 package fadedeklin.soulfantasy.common.asset.block;
 
-import fadedeklin.soulfantasy.common.asset.BlockBase;
+import fadedeklin.soulfantasy.common.core.base.BlockBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 

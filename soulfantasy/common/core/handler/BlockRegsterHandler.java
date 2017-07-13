@@ -21,7 +21,7 @@ public class BlockRegsterHandler {
 	//Contains all Blocks
 	public static Map<String, Block> BLOCKS = new HashMap<String, Block>();
 	public static Map<String, ItemBlock> ITEM_BLOCKS = new HashMap<String, ItemBlock>();
-	
+		
 	//New instance of a block for every block passed through Main Register Part using HashMap
 	public static void regBlock(Block block) {
 		BLOCKS.put(block.getRegistryName().getResourcePath(), block);
@@ -53,13 +53,15 @@ public class BlockRegsterHandler {
 		RegisterAll.HashMapRegBlock();
 		SoulFantasy.LOGGER.info("Registering Blocks: ");
 		IForgeRegistry<Block> registry = event.getRegistry();
-		for(Block block : BLOCKS.values()) {
-		registry.register(block);
-		SoulFantasy.LOGGER.info("\t\tRegistered!");
 		
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
-				new ModelResourceLocation(block.getRegistryName(),"inventory"));
-		SoulFantasy.LOGGER.info("\t\t\tBlocks Model Registered!");
+		for(Block block : BLOCKS.values()) {
+			SoulFantasy.LOGGER.info("\tRegistering " + block.getUnlocalizedName().substring(5));
+			registry.register(block);
+			SoulFantasy.LOGGER.info("\t\tRegistered!");
+		
+			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
+					new ModelResourceLocation(block.getRegistryName(),"inventory"));
+			SoulFantasy.LOGGER.info("\t\t\t" + block.getUnlocalizedName().substring(5) + "\tModel Registered!");
 		
 		}
 	}
