@@ -1,3 +1,12 @@
 itemGroup.soulfantasy=Soul Fantasy
+
+//<---item--->//
 item.blood_bottle.name=Blood Bottle
 item.green_bottle.name=Green Bottle
+item.ingot_spirit.name=Ingot Spirit
+item.corn_seed.name=Corn Seed
+item.corn.name=Corn
+
+//<---Block--->//
+tile.test_block.name=Green Test Block
+tile.test_block.name=Copper Test Block
